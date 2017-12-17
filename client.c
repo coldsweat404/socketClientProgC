@@ -30,5 +30,15 @@ int main(int argc, char *argv[])
 	host.sin_port = htons(port);
 	host.sin_addr.s_addr = inet_addr("127.0.0.1"); //Adress LocalHost
 
+	//Liaison de la socket avec le contexte d'adressage
+
+	taille = sizeof(host);
+
+	if(connect(descripteur, (struct sockaddr*)&host, taille) == -1)
+	{
+		perror("Connection impossible");
+		exit(EXIT_FAILURE);
+	}
+
 	return EXIT_SUCCESS;
 }
